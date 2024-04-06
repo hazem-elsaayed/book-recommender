@@ -20,7 +20,7 @@ export class Routes {
   setupRoutes() {
     this.router.get('/', (req, res) => {
       res.json({ message: 'Welcome to Book Recommender API', success: true });
-    }
+    });
 
     /**
      * @swagger
