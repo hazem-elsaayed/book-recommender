@@ -4,6 +4,7 @@ import {
   submitBookIntervalValidations,
 } from './validators/bookRoutes.validator.js';
 import { validatorMiddleware } from './middlewares/validator.js';
+import { validateUser } from './middlewares/validateUser.js';
 
 export class Routes {
   constructor(bookController) {
@@ -55,6 +56,7 @@ export class Routes {
       '/submit_book_interval',
       submitBookIntervalValidations,
       validatorMiddleware,
+      validateUser,
       this.bookController.submitBookInterval
     );
 
@@ -99,5 +101,9 @@ export class Routes {
       validatorMiddleware,
       this.bookController.getRecommendedBooks
     );
+
+    this.router.use((req, res) => {
+      res.status(404).json({ message: 'Route not found', success: false });
+    });
   }
 }
