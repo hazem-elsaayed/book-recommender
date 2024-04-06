@@ -17,6 +17,40 @@ export class Routes {
   }
 
   setupRoutes() {
+    /**
+     * @swagger
+     * /submit_book_interval:
+     *   post:
+     *     summary: Submit a book reading interval
+     *     description: Submit a book reading interval
+     *     requestBody:
+     *       required: true
+     *       content:
+     *         application/json:
+     *           schema:
+     *             type: object
+     *             properties:
+     *               user_id:
+     *                 type: integer
+     *               book_id:
+     *                 type: integer
+     *               start_page:
+     *                 type: integer
+     *               end_page:
+     *                 type: integer
+     *             required:
+     *               - user_id
+     *               - book_id
+     *               - start_page
+     *               - end_page
+     *     responses:
+     *       200:
+     *         description: Book interval submitted successfully
+     *       400:
+     *         description: Bad request
+     *       500:
+     *         description: Internal server error
+     */
     this.router.post(
       '/submit_book_interval',
       submitBookIntervalValidations,
@@ -24,6 +58,41 @@ export class Routes {
       this.bookController.submitBookInterval
     );
 
+    /**
+     * @swagger
+     * /recommended_books:
+     *   get:
+     *     summary: Get recommended books
+     *     description: Get recommended books
+     *     parameters:
+     *       - in: query
+     *         name: limit
+     *         schema:
+     *           type: integer
+     *         description: Number of books to return
+     *     responses:
+     *       200:
+     *         description: Recommended books
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: array
+     *               items:
+     *                 type: object
+     *                 properties:
+     *                   id:
+     *                     type: integer
+     *                   title:
+     *                     type: string
+     *                   author:
+     *                     type: string
+     *                   numberOfPagesRead:
+     *                     type: integer
+     *       400:
+     *         description: Bad request
+     *       500:
+     *         description: Internal server error
+     */
     this.router.get(
       '/recommended_books',
       getRecommendedBooksValidations,
