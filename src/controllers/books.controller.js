@@ -9,7 +9,7 @@ export class BookController {
   submitBookInterval = async (req, res, next) => {
     try {
       const result = await this.bookService.submitBookInterval(req.body);
-      await this.notificationService.sendNotification(req.body);
+      await this.notificationService.sendNotification(req.user);
       return res.status(STATUS_CODES.OK).send(result);
     } catch (error) {
       next(error);
