@@ -9,6 +9,12 @@ export const submitBookIntervalValidations = [
   check('start_page').isInt().withMessage('Start page must be an integer'),
   check('end_page').notEmpty().withMessage('End page is required'),
   check('end_page').isInt().withMessage('End page must be an integer'),
+  check('start_page').custom((value, { req }) => {
+    if (value >= req.body.end_page) {
+      throw new Error('Start page must be less than end page');
+    }
+    return true;
+  }),
 ];
 
 export const getRecommendedBooksValidations = [
