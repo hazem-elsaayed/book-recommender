@@ -7,9 +7,10 @@ import { validatorMiddleware } from './middlewares/validator.js';
 import { validateUser } from './middlewares/validateUser.js';
 
 export class Routes {
-  constructor(bookController) {
+  constructor(bookController, userRepository) {
     this.router = Router();
     this.bookController = bookController;
+    this.userRepository = userRepository;
     this.setupRoutes();
   }
 
@@ -60,7 +61,7 @@ export class Routes {
       '/submit_book_interval',
       submitBookIntervalValidations,
       validatorMiddleware,
-      validateUser,
+      validateUser(this.userRepository),
       this.bookController.submitBookInterval
     );
 
@@ -82,18 +83,24 @@ export class Routes {
      *         content:
      *           application/json:
      *             schema:
-     *               type: array
-     *               items:
-     *                 type: object
-     *                 properties:
-     *                   id:
-     *                     type: integer
-     *                   title:
-     *                     type: string
-     *                   author:
-     *                     type: string
-     *                   numberOfPagesRead:
-     *                     type: integer
+     *               type: object
+     *               properties:
+     *                 success:
+     *                   type: boolean
+     *                 books:
+     *                   schema:
+     *                     type: array
+     *                     items:
+     *                       type: object
+     *                       properties:
+     *                         id:
+     *                           type: integer
+     *                         title:
+     *                           type: string
+     *                         author:
+     *                           type: string
+     *                         numberOfPagesRead:
+     *                           type: integer
      *       400:
      *         description: Bad request
      *       500:
