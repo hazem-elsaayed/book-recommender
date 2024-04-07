@@ -8,7 +8,7 @@ import { swaggerSpecs } from './config/swagger.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-class App {
+export class App {
   constructor(router) {
     this.app = express();
     this.port = process.env.PORT || 3000;
