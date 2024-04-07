@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 10000 ./src/tests --exit",
     "start": "node src/app.js",
     "seeder": "node src/utils/dataSeeder.js"
   },
@@ -27,6 +27,8 @@
   },
   "devDependencies": {
     "chai": "^5.1.0",
-    "mocha": "^10.4.0"
+    "mocha": "^10.4.0",
+    "supertest": "^6.3.4",
+    "sinon": "^17.0.1"
   }
 }
