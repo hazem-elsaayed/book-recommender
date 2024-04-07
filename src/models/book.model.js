@@ -39,3 +39,7 @@ Book.init(
     tableName: 'books',
   }
 );
+
+Book.afterFind((books, options) => {
+  if (!books) throw new Error('Book not found');
+});
