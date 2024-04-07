@@ -15,4 +15,4 @@ const notificationService = new NotificationService(userService);
 
 const bookController = new BookController(bookService, notificationService);
 
-export const routes = new Routes(bookController);
+export const routes = new Routes(bookController, userRepository);
