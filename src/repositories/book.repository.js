@@ -16,6 +16,7 @@ export class BookRepository {
   async getRecommendedBooks(limit) {
     return await Book.findAll({
       order: [['numberOfPagesRead', 'DESC']],
+      attributes: ['id', 'title', 'author', 'numberOfPagesRead'],
       limit: limit,
     });
   }
