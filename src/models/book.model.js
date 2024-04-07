@@ -40,6 +40,6 @@ Book.init(
   }
 );
 
-Book.afterFind((books, options) => {
+Book.afterFind((books) => {
   if (!books) throw new Error('Book not found');
 });
