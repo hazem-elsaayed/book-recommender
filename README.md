@@ -26,7 +26,7 @@ Run the tests using the following command: `npm test`
 
 ## Usage
 
-You can find the apis documentation [here](https://tranquil-hollows-57215-711f2b746bd0.herokuapp.com/api-docs/). <br>
+You can find the apis documentation [here](https://book-recommender-lsvj.onrender.com/api-docs/). <br>
 You can also try the endpoints and play with them as the application is currently live -deployed on Heroku-
 
 ## Built With
